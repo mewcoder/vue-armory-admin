@@ -12,7 +12,12 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/about/index.vue')
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: () => import('../views/table/index.vue')
     }
   ]
 });
