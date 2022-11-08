@@ -1,12 +1,12 @@
-<script setup>
+<script lang="ts" setup>
 import { Setting } from '@element-plus/icons-vue';
 </script>
 
 <template>
   <header class="ar-header">
     <el-space class="ar-header__left">
-      <img src="@/assets/logo.svg" width="28" />
-      <div>Armory Admin</div>
+      <img src="@/assets/logo.svg" width="20" />
+      <div>Armory Admin Vue</div>
     </el-space>
     <div class="ar-header__right">
       <el-button :icon="Setting" circle />

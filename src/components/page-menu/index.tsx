@@ -1,26 +1,14 @@
-import { ElMenu, ElMenuItem, ElScrollbar, ElSubMenu } from 'element-plus';
-import { defineComponent } from 'vue';
-
-const list = [
-  {
-    path: '/',
-    title: 'home',
-    children: [
-      {
-        path: 'child',
-        title: 'child'
-      }
-    ]
-  },
-  {
-    path: '/about',
-    title: 'about'
-  },
-  {
-    path: '/about2',
-    title: 'about2'
-  }
-];
+import {
+  ElMenu,
+  ElMenuItem,
+  ElScrollbar,
+  ElSubMenu,
+  ElIcon
+} from 'element-plus';
+import { Menu } from '@element-plus/icons-vue';
+import { defineComponent, resolveComponent, h } from 'vue';
+import { useRoute } from 'vue-router';
+import menuList from '@/router/menu.config';
 
 const MenuItem = defineComponent({
   props: {
@@ -28,19 +16,36 @@ const MenuItem = defineComponent({
     default: () => []
   },
   setup(props) {
+    console.log(props.data);
     return () =>
       (props.data as any).map((item: any) => {
         const slots = {
-          title: () => item.title
+          title: () => {
+            const Comp = item.icon;
+            return (
+              <span style={{ display: 'flex', alignItems: 'center' }}>
+                {item.icon ? (
+                  <ElIcon>
+                    <Comp />
+                  </ElIcon>
+                ) : (
+                  <span style={{ width: '10px' }}></span>
+                )}
+                {item.title}
+              </span>
+            );
+          }
         };
         if (item?.children?.length) {
           return (
-            <ElSubMenu index={item.path} v-slots={slots}>
+            <ElSubMenu index={item.title} key={item.title} v-slots={slots}>
               <MenuItem data={item.children} />
             </ElSubMenu>
           );
         } else {
-          return <ElMenuItem index={item.path} v-slots={slots} />;
+          return (
+            <ElMenuItem index={item.path} key={item.path} v-slots={slots} />
+          );
         }
       });
   }
@@ -49,10 +54,11 @@ const MenuItem = defineComponent({
 export default defineComponent({
   name: 'PageMenu',
   setup() {
+    const route = useRoute();
     return () => (
       <ElScrollbar>
-        <ElMenu>
-          <MenuItem data={list} />
+        <ElMenu router defaultActive={route.path}>
+          <MenuItem data={menuList} />
         </ElMenu>
       </ElScrollbar>
     );
