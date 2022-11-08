@@ -11,7 +11,9 @@ import PageMenu from '@/components/page-menu/index';
     </el-header>
     <el-container>
       <el-aside width="200px"><PageMenu /></el-aside>
-      <el-main> <RouterView /></el-main>
+      <el-main>
+        <div class="view-wrap"><RouterView /></div>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -43,5 +45,10 @@ body {
 }
 .el-main {
   background-color: #f2f3f5;
+  .view-wrap {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+  }
 }
 </style>
