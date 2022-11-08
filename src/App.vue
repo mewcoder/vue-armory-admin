@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
-import PageMenu from '@/components/page-menu/index.tsx';
+import PageHeader from '@/components/page-header/index.vue';
+import PageMenu from '@/components/page-menu/index';
 </script>
 
 <template>
-  <el-container>
-    <el-header>Header</el-header>
+  <el-container class="page-container">
+    <el-header>
+      <PageHeader />
+    </el-header>
     <el-container>
       <el-aside width="200px"><PageMenu /></el-aside>
       <el-main> <RouterView /></el-main>
@@ -13,4 +16,32 @@ import PageMenu from '@/components/page-menu/index.tsx';
   </el-container>
 </template>
 
-<style scoped></style>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+</style>
+<style lang="scss" scoped>
+.page-container {
+  height: 100vh;
+}
+.el-header {
+  border-bottom: 1px solid #dcdfe6;
+}
+.el-aside {
+  height: calc(100vh - 60px);
+  border-right: 1px solid #dcdfe6;
+
+  :deep(.el-scrollbar__view) {
+    height: 100%;
+  }
+  :deep(.el-menu) {
+    height: 100%;
+    border-right: none;
+  }
+}
+.el-main {
+  background-color: #f2f3f5;
+}
+</style>

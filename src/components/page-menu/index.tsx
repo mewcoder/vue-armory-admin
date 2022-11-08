@@ -1,4 +1,4 @@
-import { ElMenu, ElMenuItem, ElSubMenu } from 'element-plus';
+import { ElMenu, ElMenuItem, ElScrollbar, ElSubMenu } from 'element-plus';
 import { defineComponent } from 'vue';
 
 const list = [
@@ -15,6 +15,10 @@ const list = [
   {
     path: '/about',
     title: 'about'
+  },
+  {
+    path: '/about2',
+    title: 'about2'
   }
 ];
 
@@ -26,39 +30,31 @@ const MenuItem = defineComponent({
   setup(props) {
     return () =>
       (props.data as any).map((item: any) => {
-        if (item.children && item.children.length) {
+        const slots = {
+          title: () => item.title
+        };
+        if (item?.children?.length) {
           return (
-            <ElSubMenu
-              index={item.path}
-              v-slots={{
-                title: () => item.title
-              }}
-            >
+            <ElSubMenu index={item.path} v-slots={slots}>
               <MenuItem data={item.children} />
             </ElSubMenu>
           );
         } else {
-          return (
-            <ElMenuItem
-              index={item.path}
-              v-slots={{
-                title: () => item.title
-              }}
-            ></ElMenuItem>
-          );
+          return <ElMenuItem index={item.path} v-slots={slots} />;
         }
       });
   }
 });
 
-const Menu = defineComponent({
+export default defineComponent({
+  name: 'PageMenu',
   setup() {
     return () => (
-      <ElMenu>
-        <MenuItem data={list} />
-      </ElMenu>
+      <ElScrollbar>
+        <ElMenu>
+          <MenuItem data={list} />
+        </ElMenu>
+      </ElScrollbar>
     );
   }
 });
-
-export default Menu;
