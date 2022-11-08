@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-import { Setting } from '@element-plus/icons-vue';
+import { ref } from 'vue';
+import { Setting, UserFilled } from '@element-plus/icons-vue';
+import pageConfig from '../page-config/index.vue';
+
+const showConfig = ref(false);
+const handleSet = () => {
+  showConfig.value = true;
+};
 </script>
 
 <template>
@@ -8,10 +15,19 @@ import { Setting } from '@element-plus/icons-vue';
       <img src="@/assets/logo.svg" width="20" />
       <div>Armory Admin Vue</div>
     </el-space>
-    <div class="ar-header__right">
-      <el-button :icon="Setting" circle />
-    </div>
+    <el-space class="ar-header__right">
+      <el-button :icon="Setting" circle @click="handleSet" />
+      <el-dropdown>
+        <el-avatar :size="32" :icon="UserFilled" />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </el-space>
   </header>
+  <pageConfig v-model="showConfig"></pageConfig>
 </template>
 
 <style lang="scss" scoped>
