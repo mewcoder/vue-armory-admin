@@ -3,19 +3,15 @@
     :model-value="modelValue"
     direction="rtl"
     append-to-body
-    @click="handleClose"
+    :before-close="handleClose"
   >
     <template #header>
-      <h4>页面配置</h4>
+      <h4>全局配置</h4>
     </template>
     <template #default>
       <div>
-        <el-radio v-model="radio1" label="Option1" size="large">
-          Option1
-        </el-radio>
-        <el-radio v-model="radio1" label="Option2" size="large">
-          Optiond2
-        </el-radio>
+        <span>水印开关：</span>
+        <el-switch v-model="config.watermark" />
       </div>
     </template>
     <template #footer>
@@ -27,16 +23,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-const radio1 = ref('Option1');
+import { useConfig } from '@/hooks/config';
 
-const emit = defineEmits(['update:modelValue']);
+const config = useConfig();
 
 defineProps({
   modelValue: { type: Boolean, default: false }
 });
 
+const emit = defineEmits(['update:modelValue']);
+
 function handleClose() {
   emit('update:modelValue', false);
 }
 </script>
+
+<style>
+
+</style>

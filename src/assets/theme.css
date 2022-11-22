@@ -43,6 +43,12 @@
 
   --el-menu-item-height: 40px;
 }
+
+/* custom style */
 .el-menu-item.is-active {
   background-color: var(--el-menu-hover-bg-color);
+}
+
+.el-drawer__header {
+  margin-bottom: 0;
 }

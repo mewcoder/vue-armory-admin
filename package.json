@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.0.10",
+    "@vueuse/core": "^9.5.0",
     "element-plus": "^2.2.20",
     "html2canvas": "^1.4.1",
     "pinia": "^2.0.21",

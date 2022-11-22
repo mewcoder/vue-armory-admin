@@ -2,6 +2,10 @@
 import { RouterView } from 'vue-router';
 import PageHeader from '@/components/page-header/index.vue';
 import PageMenu from '@/components/page-menu/index';
+import WaterMark from '@/components/watermark/index';
+import { useConfig } from '@/hooks/config';
+
+const config = useConfig();
 </script>
 
 <template>
@@ -13,6 +17,12 @@ import PageMenu from '@/components/page-menu/index';
       <el-aside width="200px"><PageMenu /></el-aside>
       <el-main>
         <div class="view-wrap"><RouterView /></div>
+        <WaterMark v-if="config.watermark">
+          <div>
+            <div>用户名：admin</div>
+            <div>IP地址：127.0.0.1</div>
+          </div>
+        </WaterMark>
       </el-main>
     </el-container>
   </el-container>
