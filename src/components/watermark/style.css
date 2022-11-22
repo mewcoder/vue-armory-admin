@@ -4,7 +4,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  overflow: hidden;
+  overflow: hidden; 
+  pointer-events: none;
 }
 
 .a-watermark__canvas {
@@ -16,6 +17,7 @@
   align-items: center;
   justify-content: center;
   color: rgba(0, 0, 0, 0.12);
+  filer
   font-size: 16px;
   transform: rotate(-25deg);
 }
@@ -23,6 +25,6 @@
 .a-watermark__wrapper {
   width: 100%;
   height: 100%;
-  pointer-events: none;
+
   background-repeat: repeat;
 }

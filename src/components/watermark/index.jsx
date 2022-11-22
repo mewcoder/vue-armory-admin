@@ -3,7 +3,22 @@ import { defineComponent, onMounted, ref } from 'vue';
 import html2canvas from 'html2canvas';
 import { dataURLtoBlobUrl } from '@/utils';
 
+async function fetchImg(dom) {
+  const imgList = dom.querySelectorAll('img');
+  if (!imgList.length) return;
+  console.log(imgList);
+  const fetchList = [...imgList].map(
+    (img) =>
+      new Promise((reslove) => {
+        img.onload = () => reslove();
+      })
+  );
+  await Promise.all(fetchList);
+  return;
+}
+
 async function renderImg(dom) {
+  await fetchImg(dom);
   const canvas = await html2canvas(dom, {
     allowTaint: true,
     useCORS: true,

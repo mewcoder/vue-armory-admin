@@ -44,6 +44,7 @@ body {
   }
 }
 .el-main {
+  position: relative;
   background-color: #f2f3f5;
   .view-wrap {
     background: #fff;
