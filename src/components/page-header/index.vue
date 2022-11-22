@@ -13,7 +13,7 @@ const handleSet = () => {
   <header class="ar-header">
     <el-space class="ar-header__left">
       <img src="@/assets/logo.svg" width="20" />
-      <div>Armory Admin Vue</div>
+      <div>Armory Admin</div>
     </el-space>
     <el-space class="ar-header__right">
       <el-button :icon="Setting" circle @click="handleSet" />
