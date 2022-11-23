@@ -6,7 +6,7 @@ export function usePagination(getList: any) {
     pageSize: 20, // 每页显示数量
     total: 0 // 总数
   });
-  
+
   const handleSizeChange = (pageSize: number) => {
     pagination.pageSize = pageSize;
     getList();

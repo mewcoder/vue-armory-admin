@@ -16,7 +16,6 @@ const MenuItem = defineComponent({
     default: () => []
   },
   setup(props) {
-    console.log(props.data);
     return () =>
       (props.data as any).map((item: any) => {
         const slots = {

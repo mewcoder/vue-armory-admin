@@ -1,4 +1,4 @@
-import { Burger, Orange } from '@element-plus/icons-vue';
+import { Burger, Orange, IceCreamSquare } from '@element-plus/icons-vue';
 export default [
   {
     title: '基础',
@@ -18,5 +18,10 @@ export default [
     title: '详情',
     path: '/about',
     icon: Orange
+  },
+  {
+    title: '虚拟列表',
+    path: '/list',
+    icon: IceCreamSquare
   }
 ];

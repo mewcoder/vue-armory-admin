@@ -56,10 +56,12 @@ body {
 .el-main {
   position: relative;
   background-color: #f2f3f5;
+  display: flex;
   .view-wrap {
     background: #fff;
-    padding: 24px;
+    padding: 20px;
     border-radius: 4px;
+    flex: 1;
   }
 }
 </style>
