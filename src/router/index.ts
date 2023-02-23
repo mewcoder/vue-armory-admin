@@ -25,9 +25,9 @@ const router = createRouter({
       component: () => import('../views/form/index.vue')
     },
     {
-      path: '/list',
-      name: 'list',
-      component: () => import('../views/list/index.vue')
+      path: '/vlist-base',
+      name: 'vlist-base',
+      component: () => import('../views/vlist/base.vue')
     }
   ]
 });

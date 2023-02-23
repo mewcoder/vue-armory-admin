@@ -15,13 +15,18 @@ export default [
     ]
   },
   {
+    title: '虚拟列表',
+    icon: IceCreamSquare,
+    children: [
+      {
+        title: '基本',
+        path: '/vlist-base'
+      }
+    ]
+  },
+  {
     title: '详情',
     path: '/about',
     icon: Orange
-  },
-  {
-    title: '虚拟列表',
-    path: '/list',
-    icon: IceCreamSquare
   }
 ];

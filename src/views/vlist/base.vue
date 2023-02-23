@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VirtualList ref="listRef" class="container" :list="dataList" :size="100">
+    <VirtualList ref="listRef" class="container" :list="dataList" :size="110">
       <template #default="{ item }">
         <div class="item-card">
           <img class="item-card__img" :src="item.img" />
@@ -9,14 +9,6 @@
             <div class="item-card__description">{{ item.description }}</div>
           </div>
         </div>
-
-        <!-- <div class="item">
-          <span class="time">{{ item.date }}</span>
-          <span class="value" :title="item.eventType">{{
-            item.eventType
-          }}</span>
-          <span class="tag" :title="item.status">{{ item.status }}</span>
-        </div> -->
       </template>
     </VirtualList>
   </div>
@@ -34,7 +26,7 @@ const dataList = ref([]);
 async function getDataLit() {
   const res = await getCardList({
     pageNo: 1,
-    pageSize: 20
+    pageSize: 200
   });
   if (res.code === 200) {
     dataList.value = res.data.list;
@@ -53,14 +45,19 @@ export default {
 .container {
   width: 400px;
   height: 600px;
-  border: 1px solid #ccc;
-  overflow: auto;
+  border: 1px solid #333;
+  padding: 10px 0 10px 10px;
+  border-radius: 8px;
 }
 .item-card {
+  box-sizing: border-box;
   height: 100px;
   padding: 10px;
   display: flex;
   align-items: center;
+  border: 1px solid var(--el-color-primary);
+  border-radius: 8px;
+  cursor: pointer;
   &__img {
     width: 80px;
     height: 80px;

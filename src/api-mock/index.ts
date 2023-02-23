@@ -5,7 +5,7 @@ import './card.ts';
 
 if (!isDev) {
   Mock.setup({
-    timeout: '600-1000'
+    timeout: '100-500'
   });
 }
 
