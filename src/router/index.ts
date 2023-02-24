@@ -28,6 +28,11 @@ const router = createRouter({
       path: '/vlist-base',
       name: 'vlist-base',
       component: () => import('../views/vlist/base.vue')
+    },
+    {
+      path: '/vlist-ws',
+      name: 'vlist-ws',
+      component: () => import('../views/vlist/event.vue')
     }
   ]
 });

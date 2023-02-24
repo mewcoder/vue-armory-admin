@@ -21,6 +21,10 @@ export default [
       {
         title: '基本',
         path: '/vlist-base'
+      },
+      {
+        title: '实时事件',
+        path: '/vlist-ws'
       }
     ]
   },
