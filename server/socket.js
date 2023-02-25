@@ -7,20 +7,19 @@ const app = websocket(new koa());
 const router = koaRouter();
 
 let wsMap = {};
-let i = 0;
 
 function broadcast() {
   // 随机广告
   setInterval(function () {
-    let n = Math.random();
-    if (n > 0.3) {
+    const n = Math.random();
+    if (n > 0.5) {
       let msg = JSON.stringify({ code: '0', data: n });
-      for (let key in wsMap) {
+      for (const key in wsMap) {
         console.log('send to client:', key);
         wsMap[key].websocket.send(msg);
       }
     }
-  }, 1000);
+  }, 3000);
 }
 
 broadcast();
@@ -28,17 +27,23 @@ broadcast();
 router.all('/ws', (ctx) => {
   // 客户端链接传过来的客户端身份
   const { userId } = ctx.query;
-  console.log('receive...', userId);
 
+  if (wsMap[userId]) return;
+
+  console.log('connect:', userId);
   // 将链接保存起来
   wsMap[userId] = ctx;
 
   // 监听客户端发送过来的信息
-  ctx.websocket.on('message', function (message) {
-    console.log(JSON.parse(message));
+  wsMap[userId].websocket.on('message', function (message) {
+    console.log('on message:', JSON.parse(message));
+    const res = JSON.parse(message);
+    if (res.code === '1') {
+      // ctx.websocket.send(JSON.stringify({ code: '1', data: new Date() }));
+    }
   });
 
-  ctx.websocket.on('close', () => {
+  wsMap[userId].websocket.on('close', () => {
     delete wsMap[userId];
     console.log(userId, ':close websocket');
   });

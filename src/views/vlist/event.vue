@@ -11,7 +11,12 @@ import Socket from '@/utils/socket';
 let ws;
 
 function handleOpen() {
-  ws = new Socket('ws://127.0.0.1:3000/ws?userId=admin');
+  ws = new Socket('ws://127.0.0.1:3000/ws?userId=admin', {
+    heartInterval: 2000,
+    heartTimeOut: 1000,
+    reconnectInterval: 2000,
+    reconnectLimit: 5
+  });
 }
 
 function handleClose() {
